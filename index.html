@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Turístico de D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Guia Turístico de Dungeons & Dragons</h1>
+            <nav>
+                <a href="#locations">Destinos</a>
+                <a href="#booking">Reserve sua Aventura</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="locations">
+        <div class="container">
+            <h2>Explore Locais Mágicos</h2>
+
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="images/Neverwinter.jpg" alt="Neverwinter">
+                    <div class="location-details">
+                        <h2>Neverwinter</h2>
+                        <p>Conhecida como a "Jóia do Norte", Neverwinter possui arquitetura deslumbrante, mercados movimentados e uma rica história cheia de aventuras.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="images/baldurs.jpg" alt="Baldur's Gate">
+                    <div class="location-details">
+                        <h2>Baldur's Gate</h2>
+                        <p>Uma cidade portuária movimentada, cheia de intrigas, comércio e incontáveis histórias de perigo e heroísmo.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="images/waterdeep.jpg" alt="Água Profunda">
+                    <div class="location-details">
+                        <h2>Água Profunda</h2>
+                        <p>Também conhecida como a "Cidade dos Esplendores", Água Profunda é famosa por suas guildas influentes, ruas movimentadas e uma rica tapeçaria de aventuras lendárias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="form-section">
+        <div class="container">
+            <h2>Reserve Sua Aventura</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Escolha seu Destino</label>
+                    <select id="destination" name="destination" required>
+                        <option value="neverwinter">Neverwinter</option>
+                        <option value="baldurs-gate">Baldur's Gate</option>
+                        <option value="waterdeep">Água Profunda</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Solicitações Adicionais</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+
+        function showItem(index) {
+            items.forEach((item, i) => {
+                item.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function nextItem() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            showItem(currentIndex);
+        }
+
+        function previousItem() {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            showItem(currentIndex);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showItem(currentIndex);
+            setInterval(nextItem, 5000);
+        });
+    </script>
+</body>
+</html>
